@@ -7,6 +7,11 @@ conn = manager.connect(host='127.0.0.1', port=port, username=username, password=
 
 
 def netconf_edit_config(data):
+    """
+    This function takes input post data and pushes it to device using NETCONF edit-config call.
+    :param data:
+    :return: boolean
+    """
     interface_data = """
          <config>
              <interfaces xmlns="http://automation/interfaces">
@@ -30,6 +35,11 @@ def netconf_edit_config(data):
 
 
 def netconf_get(interface_name):
+    """
+    This function checks for the interface admin and oper status using NETCONF get call.
+    :param interface_name:
+    :return: admin state, oper status
+    """
     interface_data = """   
              <interfaces xmlns="http://automation/interfaces">
                 <interface>
