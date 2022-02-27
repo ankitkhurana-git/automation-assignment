@@ -6,7 +6,7 @@ conn = manager.connect(host='127.0.0.1', port=port, username=username, password=
                        hostkey_verify=host_verify)
 
 
-def netconf_post(data):
+def netconf_edit_config(data):
     interface_data = """
          <config>
              <interfaces xmlns="http://automation/interfaces">
@@ -41,6 +41,7 @@ def netconf_get(interface_name):
     data = xmltodict.parse(reply.xml)
     print(data)
     if data["rpc-reply"]["data"] is not None:
-        return data["rpc-reply"]["data"]["interfaces"]["interface"]["admin-state"]
+        return data["rpc-reply"]["data"]["interfaces"]["interface"]["admin-state"], \
+               data["rpc-reply"]["data"]["interfaces"]["interface"]["oper-status"]
     else:
-        return None
+        return None, None
