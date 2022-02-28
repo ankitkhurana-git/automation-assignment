@@ -1,0 +1,39 @@
+module automation {
+    namespace "urn:automation:test";
+    prefix "automation";
+
+    import ietf-inet-types { prefix inet; }
+
+    container interfaces {
+        list interface {
+            key interface-name;
+
+            leaf interface-name {
+                type string;
+            }
+
+            leaf admin-state {
+                type boolean;
+            }
+            
+            leaf oper-status {
+                type string;
+            }
+            
+            leaf description {
+                type string;
+            }
+            
+            leaf vlan {
+                type uint16 {
+                    range "1..4094";
+                }
+            }
+
+            leaf ip-address {
+                type inet:ipv4-address;
+            }
+        }
+    }
+}
+

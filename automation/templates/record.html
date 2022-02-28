@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+   <body>
+
+      <table border = 1>
+         <thead>
+            <td>ID</td>
+            <td>Interface</td>
+            <td>Request Method</td>
+            <td>Netconf Operation</td>
+            <td>Response</td>
+         </thead>
+
+         {% for row in rows %}
+            <tr>
+               <td>{{row["id"]}}</td>
+               <td>{{row["interface_name"]}}</td>
+               <td>{{row["request_method"]}}</td>
+               <td> {{ row["netconf_operation"]}}</td>
+               <td>{{row['response']}}</td>
+            </tr>
+         {% endfor %}
+      </table>
+
+   </body>
+</html>

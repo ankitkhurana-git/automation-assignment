@@ -1,8 +1,9 @@
 from ncclient import manager
 from util.constants import *
 import xmltodict
+from automation_db.db_operations import insert_device_record
 
-conn = manager.connect(host='127.0.0.1', port=port, username=username, password=password,
+conn = manager.connect(host='10.0.2.15', port=port, username=username, password=password,
                        hostkey_verify=host_verify)
 
 
@@ -31,6 +32,7 @@ def netconf_edit_config(data):
         target="running", config=interface_data, default_operation="merge"
     )
 
+    insert_device_record(data["interface-name"], "post", "edit-config", str(reply.ok))
     return reply.ok
 
 
@@ -50,8 +52,15 @@ def netconf_get(interface_name):
     reply = conn.get(filter=("subtree", interface_data))
     data = xmltodict.parse(reply.xml)
     print(data)
+
     if data["rpc-reply"]["data"] is not None:
-        return data["rpc-reply"]["data"]["interfaces"]["interface"]["admin-state"], \
-               data["rpc-reply"]["data"]["interfaces"]["interface"]["oper-status"]
+        admin_state = data["rpc-reply"]["data"]["interfaces"]["interface"]["admin-state"]
+        oper_status = data["rpc-reply"]["data"]["interfaces"]["interface"]["oper-status"]
+
+        insert_device_record(interface_name, "get", "get", "admin-status: {}".format(admin_state) )
+
+        return admin_state, oper_status
+
     else:
+        insert_device_record(interface_name, "get", "get", "Interface not configured")
         return None, None
