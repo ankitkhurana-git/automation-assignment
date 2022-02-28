@@ -18,7 +18,7 @@ def netconf_edit_config(data):
              <interfaces xmlns="http://automation/interfaces">
                 <interface>
                     <name>{0}</name>
-                    <description>Interface</description>
+                    <description>Interface Configutaion</description>
                     <admin-state>{1}</admin-state>
                     <oper-status>{2}</oper-status>
                     <vlan>256</vlan>
