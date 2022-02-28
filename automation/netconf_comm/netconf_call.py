@@ -32,7 +32,7 @@ def netconf_edit_config(data):
         target="running", config=interface_data, default_operation="merge"
     )
 
-    insert_device_record(data["interface-name"], "post", "edit-config", str(reply.ok))
+    insert_device_record(data["interface-name"], "post(shutdown = {})".format(data["shutdown"]), "edit-config", str(reply.ok))
     return reply.ok
 
 
