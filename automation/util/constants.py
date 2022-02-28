@@ -1,4 +1,4 @@
-port = 17830
-username = "admin"
-password = "ankit"
-host_verify = False
+PORT = 17830
+USERNAME = "admin"
+PASSWORD = "ankit"
+HOST_VERIFY = False

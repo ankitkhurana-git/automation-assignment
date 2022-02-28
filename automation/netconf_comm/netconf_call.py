@@ -3,8 +3,8 @@ from util.constants import *
 import xmltodict
 from automation_db.db_operations import insert_device_record
 
-conn = manager.connect(host='10.0.2.15', port=port, username=username, password=password,
-                       hostkey_verify=host_verify)
+conn = manager.connect(host='10.0.2.15', port=PORT, username=USERNAME, password=PASSWORD,
+                       hostkey_verify=HOST_VERIFY)
 
 
 def netconf_edit_config(data):
