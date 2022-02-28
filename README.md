@@ -25,7 +25,7 @@ in configuration as per the request.
 ODL's Netconf-testtool simulates NETCONF devices. To simulate a device, testtool jar is needed to be run with appropriate
 flags.
 
-###Example:
+### Example:
 
 ```
 java -jar <netconf-testtool-1.1.0-SNAPSHOT-executable.jar> --schemas-dir SCHEMAS-DIR <yang-folder>
