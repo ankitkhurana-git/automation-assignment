@@ -28,7 +28,7 @@ flags.
 ### Example:
 
 ```
-java -jar <netconf-testtool-1.1.0-SNAPSHOT-executable.jar> --schemas-dir SCHEMAS-DIR <yang-folder>
+java -jar <netconf-testtool-1.1.0-SNAPSHOT-executable.jar> --schemas-dir <yang-folder>
 ```
 
 
