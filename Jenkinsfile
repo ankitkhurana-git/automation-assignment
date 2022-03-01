@@ -5,7 +5,7 @@ node {
          error('Dockerfile missing.')
       }
 	  if (!fileExists("Jenkinsfile")) {
-         error('Dockerfile missing.')
+         error('Jenkinsfile missing.')
       }
    }
   
